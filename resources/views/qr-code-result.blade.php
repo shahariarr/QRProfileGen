@@ -19,7 +19,7 @@
             min-height: 100vh;
             color: #333;
         }
-        header, footer {
+        header {
             background: linear-gradient(45deg, #43cea2, #185a9d); /* Gradient Color */
             color: #fff;
             text-align: center;
@@ -29,21 +29,22 @@
             align-items: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .logout-form {
-            margin-right: 1rem;
+        header h1 {
+            margin: 0;
         }
-        .logout-form button {
-            background-color: #fff;
-            color: #007BFF;
+        .logout-btn {
+            background: linear-gradient(45deg, #ff5f6d, #ffc371);
+            color: #fff;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
-        .logout-form button:hover {
-            background-color: #e2e6ea;
+        .logout-btn:hover {
+            background: linear-gradient(45deg, #ff4e50, #ffb347);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
         }
         .container {
             flex: 1;
@@ -66,13 +67,12 @@
         .info:hover {
             transform: scale(1.05);
         }
-        /* Edit Button Styles */
         .edit-btn {
             position: absolute;
             top: 20px;
             right: 20px;
-            text-decoration: none; /* Remove underline */
-            background: linear-gradient(45deg, #28a745, #1e7e34); /* Gradient Color */
+            text-decoration: none;
+            background: linear-gradient(45deg, #28a745, #1e7e34);
             color: #fff;
             border: none;
             padding: 0.7rem 1.5rem;
@@ -83,12 +83,8 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
         .edit-btn:hover {
-            background: linear-gradient(45deg, #218838, #155d27); /* Hover Gradient */
+            background: linear-gradient(45deg, #218838, #155d27);
             transform: scale(1.05);
-        }
-        .logout-form button:hover {
-            background: linear-gradient(45deg, #43cea2, #185a9d);
-            transform: translateY(-3px);
         }
         .info img {
             max-width: 150px;
@@ -142,12 +138,11 @@
         <h1>Assalamu Alaikum</h1>
         <form class="logout-form" action="{{ route('logout') }}" method="POST">
             @csrf
-            <button type="submit">Logout</button>
+            <button type="submit" class="logout-btn">Logout</button>
         </form>
     </header>
     <div class="container">
         <div class="info">
-            <!-- Edit button to link to profile edit page -->
             <a href="{{ route('qr-code-edit', ['id' => $data['id']]) }}" class="edit-btn">Edit Profile</a>
 
             <img src="{{ asset('profile_images/' . $data['image']) }}" alt="Profile Image">

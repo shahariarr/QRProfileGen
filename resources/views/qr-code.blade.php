@@ -19,13 +19,33 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        header, footer {
+        header {
             background: linear-gradient(45deg, #43cea2, #185a9d);
             color: #fff;
             padding: 15px 30px;
             text-align: center;
             font-weight: 600;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .logout-btn {
+            background: linear-gradient(45deg, #ff5f6d, #ffc371);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+        .logout-btn:hover {
+            background: linear-gradient(45deg, #ff4e50, #ffb347);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
         }
         .container {
             flex: 1;
@@ -41,7 +61,7 @@
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
-            max-width: 500px;
+            max-width: 800px;
             width: 100%;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -93,16 +113,6 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
         }
-        .logout-btn {
-            background: linear-gradient(45deg, #ff5f6d, #ffc371);
-            color: #fff;
-            margin-left: 10px;
-        }
-        .logout-btn:hover {
-            background: linear-gradient(45deg, #ff4e50, #ffb347);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-        }
         footer p {
             font-size: 14px;
             color: #fff;
@@ -114,16 +124,16 @@
             .form-container {
                 padding: 25px;
             }
-            .logout-btn {
-                margin-top: 10px;
-                margin-left: 0;
-            }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>QR Code Generator</h1>
+        <form class="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
     </header>
     <div class="container">
         <div class="form-container">
@@ -140,10 +150,6 @@
                 <input type="file" name="image" accept="image/*" required>
                 <div style="display: flex; justify-content: center;">
                     <button type="submit" class="generate-btn">Generate QR Codes</button>
-                    <form class="logout-form" action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="logout-btn">Logout</button>
-                    </form>
                 </div>
             </form>
         </div>
