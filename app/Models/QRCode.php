@@ -20,5 +20,6 @@ class QRCode extends Model
         'phone',
         'sms',
         'image',
+        'user_id',
     ];
 }

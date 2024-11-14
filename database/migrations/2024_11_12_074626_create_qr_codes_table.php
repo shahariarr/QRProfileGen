@@ -23,6 +23,8 @@ class CreateQrCodesTable extends Migration
             $table->string('phone');
             $table->string('sms');
             $table->string('image')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate()->restrictOnDelete();
             $table->timestamps();
         });
     }
