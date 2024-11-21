@@ -19,5 +19,6 @@ Route::redirect('/','login');
 
 //abc
 
+//xyz
 
 
