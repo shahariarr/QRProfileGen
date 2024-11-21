@@ -17,5 +17,6 @@ Route::put('update-qr-code/{id}', [QRCodeController::class, 'update'])->name('up
 Auth::routes();
 Route::redirect('/','login');
 
+//xyz
 
 
